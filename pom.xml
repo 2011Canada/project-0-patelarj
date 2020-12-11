@@ -4,4 +4,22 @@
   <artifactId>project0</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Project0</name>
+  
+  <dependencies>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.11.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+	<dependency>
+    	<groupId>org.postgresql</groupId>
+    	<artifactId>postgresql</artifactId>
+    	<version>42.2.18</version>
+	</dependency>
+
+
+	</dependencies>
+  
 </project>

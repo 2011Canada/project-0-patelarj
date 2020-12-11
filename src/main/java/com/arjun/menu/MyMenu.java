@@ -7,7 +7,7 @@ public class MyMenu {
 		
 		// Display Main Login Page 
 			
-	   static public String loginMenu() {
+	    public String loginMenu() {
 				
 				return "####################################"+ "\n" + 
 						"1. Log In"+ "\n" + 
@@ -17,7 +17,7 @@ public class MyMenu {
 			}
 		
 		// Display user Menu
-		static public String userMenu() {
+		public String userMenu() {
 			
 			return "####################################"+ "\n" +
 					"1. Apply for Account " +"\n"+
@@ -26,7 +26,7 @@ public class MyMenu {
 			
 		    }
 		
-		static public String customerMenu() {
+		public String customerMenu() {
 			
 			return "####################################\n" +
 					"1. View Account Ballence \n"+
@@ -39,7 +39,7 @@ public class MyMenu {
 			
 		}  
 		
-		static public String employeeMenu() {
+		 public String employeeMenu() {
 			
 			return "####################################\n" +
 					"1. View Account Request \n"+
