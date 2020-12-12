@@ -20,8 +20,9 @@ public class MyMenu {
 		public String userMenu() {
 			
 			return "####################################"+ "\n" +
-					"1. Apply for Account " +"\n"+
-				   "2. Log Out"  +"\n"+
+					"1. Log Out"  +"\n"+
+					"2. Apply for Account " +"\n"+
+				  
 				    "Make Your Choice : ";
 			
 		    }
@@ -29,11 +30,12 @@ public class MyMenu {
 		public String customerMenu() {
 			
 			return "####################################\n" +
-					"1. View Account Ballence \n"+
-				   "2. Make Transfer \n"+
-				   "3. Accept Transfer \n"+
-				   "4. Deposit & Widrow Money \n"+
-				   "5. Log Out \n"+
+				   "1. Log Out \n"+
+				   "2. View Account Ballence \n"+
+				   "3. Make Transfer \n"+
+				   "4. Accept Transfer \n"+
+				   "5. Deposit & Widrow Money \n"+
+				   
 				   "Make Your Choice : ";
 				   
 			
@@ -42,11 +44,11 @@ public class MyMenu {
 		 public String employeeMenu() {
 			
 			return "####################################\n" +
-					"1. View Account Request \n"+
-					   "2. view Customer Account \n"+
-					   "3. View All Transection \n"+
-					   "5. Log Out \n"+
-					   "Make Your Choice : ";
+					"1. Log Out \n"+
+					"2. View Account Request \n"+
+					"3. view Customer Account \n"+
+					"4. View All Transection \n"+
+					"Make Your Choice : ";
 					   
 			
 		}

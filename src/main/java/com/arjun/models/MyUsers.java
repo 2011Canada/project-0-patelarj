@@ -7,7 +7,20 @@ public class MyUsers {
 	private String userName;
 	private String pssWord;
 	private int SecurityLevel;
+	private int userId;
 	
+
+	public int getUserId() {
+		return userId;
+	}
+	
+	
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+
 
 	public MyUsers(String firstName, String lastName, String userName, String pssWord) {
 		super();
@@ -34,13 +47,21 @@ public class MyUsers {
 	}
 
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public String getPssWord() {
+		return pssWord;
+	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
 
 	public void setSecurityLevel(int securityLevel) {
-		SecurityLevel = securityLevel;
+		this.SecurityLevel = securityLevel;
 	}
 
 	public String getLastName() {

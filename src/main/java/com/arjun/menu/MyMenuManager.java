@@ -43,19 +43,24 @@ public class MyMenuManager {
 		
 	}
 	
-	public static void menuManager(MyUsers one) {
+	public static int menuManager(MyUsers one) {
+		
+		
 		
 		if(one.getSecurityLevel() == 0) {
-			displayUserMenu(one);
+		  return displayUserMenu(one);
 		}
 		else if (one.getSecurityLevel()== 1) {
-			displayCustomerMenu(one);
+			return displayCustomerMenu(one);
 		}
 		else if(one.getSecurityLevel()==2) {
-			displayEmployeeMenu(one);
+			return displayEmployeeMenu(one);
+		}
+		else {
+			System.out.println("User not exist");
 		}
 		
-		
+		return 1;
 		
 	}
 	
