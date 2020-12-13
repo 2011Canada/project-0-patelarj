@@ -2,11 +2,13 @@ package com.arjun.main;
 
 
 import com.arjun.menu.MyMenuManager;
+import com.arjun.models.MyTransfer;
 import com.arjun.models.MyUsers;
 import com.arjun.services.MyAccountServices;
 import com.arjun.services.MyAppServices;
 import com.arjun.services.MyEmployeeServices;
 
+import repositories.MyAccountDAO;
 import repositories.MyAppDAO;
 
 
@@ -23,6 +25,7 @@ public class MyApp {
 	MyAppServices appServices = new MyAppServices();
 	MyAccountServices accountServices = new MyAccountServices();
 	MyEmployeeServices employeeServices = new MyEmployeeServices();
+	MyTransfer transfer = new MyTransfer();
 	
 		
 		do {
@@ -81,13 +84,38 @@ public class MyApp {
 								break;
 								case 2:
 									
-									System.out.println("you have selected 2 ");
-									//int inputat3 = MyMenuManager.menuManager(one);
+									System.out.println("############################################");
+									System.out.println("Your Account Ballence is $" + accountServices.getAccountBallence(one.getUserId()));
+									userinputat2 = MyMenuManager.menuManager(one);
+									
 									
 								break;
 								case 3:
 									
-									System.out.println("you have selecter 3");
+									Boolean done = true;
+									
+									do {
+									transfer = accountServices.createTransfer(one);
+									
+									if(accountServices.updateBallenceTransfer(one.getUserId(), transfer.getAmount())) {
+										done = accountServices.transferNow(transfer);
+										
+									
+									}
+									else {
+										System.out.println("Can not Transfer Money ");
+									}
+									
+									
+									}
+									while(!done);
+									
+										
+										
+										userinputat2 = MyMenuManager.menuManager(one);
+																		
+									
+									
 								break;
 								case 4:
 									

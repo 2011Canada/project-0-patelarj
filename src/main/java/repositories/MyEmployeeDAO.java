@@ -50,6 +50,8 @@ public class MyEmployeeDAO {
 				
 			}
 			
+			// this method update the account table for the status of the account  
+			
 			public Boolean approveAccount(int accountId, int status) {
 				
 				Boolean isAccountApproved = false;
@@ -72,6 +74,8 @@ public class MyEmployeeDAO {
 				
 				return isAccountApproved;
 			}
+			
+			// this will update the users table for the security level for the manuchage
 			
 			public Boolean approveCustomerAccount(int uid, int status) {
 				Boolean isAccountApproved = false;
