@@ -8,8 +8,9 @@ import java.util.Scanner;
 import javax.sound.midi.SysexMessage;
 
 import com.arjun.models.MyAccount;
+import com.arjun.models.MyUsers;
 
-
+import repositories.MyAppDAO;
 import repositories.MyEmployeeDAO;
 
 public class MyEmployeeServices {
@@ -19,11 +20,13 @@ public class MyEmployeeServices {
 	
 		
 		MyEmployeeDAO empDAO = new MyEmployeeDAO();
+		MyAppDAO appDAO = new MyAppDAO();
 		List<MyAccount> accounts = new ArrayList<MyAccount>();
+		MyUsers user = new MyUsers();
 		Scanner newScan = new Scanner(System.in);
 		
 		
-		public void pandingAccount() {
+		private void pandingAccount() {
 			
 			
 		accounts =	empDAO.getPendingAccount();
@@ -42,6 +45,29 @@ public class MyEmployeeServices {
 	
 		}
 		
+		public void getAllAccount() {
+			
+			accounts =	empDAO.getAllApprov();
+			
+			
+			
+			
+			for(int i = 0; i< accounts.size(); i++) {
+				user = appDAO.getUsers(accounts.get(i).getUserId());
+				
+					System.out.println("########################################################################################################################################");
+					System.out.println("Name : "+ user.getFirstName() +" "+ user.getLastName() +" Account ID : "+accounts.get(i).getAccountId()+" User ID : "+ accounts.get(i).getUserId()+" Ballence : "+accounts.get(i).getAccountBallence());
+					
+					
+				}
+			
+			
+			
+			
+		}
+		
+		
+	// chekes if the account request is exists 	
 		
 		private int[] isRequestExists(List<MyAccount> one, int accountID ) {
 			
@@ -62,6 +88,9 @@ public class MyEmployeeServices {
 			
 			
 		} 
+		
+		
+	// this will ask for user input to approve the or rejest
 		
 		
 		public int approveAccount(){

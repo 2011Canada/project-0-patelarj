@@ -37,6 +37,8 @@ public class MyApp {
 			case 1:
 				
 						one = appServices.logInService();
+						
+						
 						userinputat2 = MyMenuManager.menuManager(one);
 						
 						//this block //
@@ -75,6 +77,9 @@ public class MyApp {
 						else if(one.getSecurityLevel() ==1) {
 							
 							
+							
+							
+									
 								switch(userinputat2) {
 								case 1:
 										
@@ -104,6 +109,7 @@ public class MyApp {
 									}
 									else {
 										System.out.println("Can not Transfer Money ");
+										
 									}
 									
 									
@@ -119,11 +125,34 @@ public class MyApp {
 								break;
 								case 4:
 									
-									System.out.println("you have selecter 4");
+									
+									int respoce = accountServices.approveTransection(one.getUserId());
+									
+									if(respoce == 0) {
+									userinputat2 = MyMenuManager.menuManager(one);
+									}
+									
+									
 								break;
 								case 5:
 									
-									System.out.println("you have selecter 5");
+										Boolean issuccess = false;
+									
+										
+											issuccess = accountServices.depositOrWidrow(one.getUserId());
+											System.out.println(issuccess);
+										if(!issuccess) {
+											
+											System.out.println("Please Enter the valid amount");
+											userinputat2 = 2;
+										}
+										else if(issuccess) {
+											System.out.println("Your Transfer is Complit"); 
+											userinputat2 = 2;
+										}
+										 
+										//userinputat2 = MyMenuManager.menuManager(one);
+										
 								break;
 
 								}
@@ -156,7 +185,10 @@ public class MyApp {
 								break;
 								case 3:
 									
-									System.out.println("you have selecter 3");
+									
+									employeeServices.getAllAccount();
+									userinputat2 = MyMenuManager.menuManager(one);
+									
 								break;
 								case 4:
 									
@@ -196,21 +228,6 @@ public class MyApp {
 		}
 		while(userinput != 3);
 		
-	
-	/*System.out.println("hello ");
-	
-	MyAppDAO one = new MyAppDAO();
-	MyUsers two = new MyUsers(); 
-	
-	int uid = one.checkLogin("arjun22", "7829");
-	
-	two = one.getUsers(uid);
-	
-	
-	System.out.println("My name is :" +two.getFirstName()+ "\n" +
-						"My Last nem is "+two.getLastName());
-	*/
-	
 		
 	}
 

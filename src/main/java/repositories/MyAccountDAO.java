@@ -170,6 +170,35 @@ public class MyAccountDAO {
 				return done;
 			}
 			
+			
+			// update the transection if approve or not in transection table in data base if success returns true or false
+			
+			public Boolean updateTransferTable(MyTransfer transfer, int responce) {
+				Boolean done = false;
+				
+				String sql = "update transfer set approval = ? where transaction_id = ?";
+				
+				try {
+					pst = conn.prepareStatement(sql);
+					pst.setInt(1, responce);
+					pst.setInt(2, transfer.getTransactionId());
+					
+					int rst = pst.executeUpdate();
+					if(rst != 0) {
+						done = true;
+					}
+					
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				return done;
+				
+			}
+			
+			
 		// return the account ballece of perticuler user 
 			
 			public double getBallence(int userId) {
@@ -229,7 +258,7 @@ public class MyAccountDAO {
 				List<MyTransfer> transfer = new ArrayList<MyTransfer>();
 				
 				
-				String sql ="Select transaction_id, from_account_acid, to_account_acid, amount from transfer where approval = 0 and to_account_acid = ? ";
+				String sql ="Select transaction_id, from_account_acid, to_account_acid, amount from transfer where approval = 0 and to_account_acid = ? and amount > 0 ";
 				
 				try {
 					pst = conn.prepareStatement(sql);
@@ -239,10 +268,10 @@ public class MyAccountDAO {
 					
 					while(rst.next()) {
 						MyTransfer accounts = new MyTransfer();
-						accounts.setTransactionId(1);
-						accounts.setFromAccountId(2);
-						accounts.setToAccountId(3);
-						accounts.setAmount(4);
+						accounts.setTransactionId(rst.getInt(1));
+						accounts.setFromAccountId(rst.getInt(2));
+						accounts.setToAccountId(rst.getInt(3));
+						accounts.setAmount(rst.getDouble(4));
 						
 						transfer.add(accounts);		
 					}
@@ -252,6 +281,36 @@ public class MyAccountDAO {
 					e.printStackTrace();
 				}
 				return transfer;
+			}
+			
+			
+			// this will return -1 if user id not found 
+			// this will find the userid from the account id; 
+			public int getUserIdByAccountId(int accountId) {
+				
+				int userid = -1;
+				
+				String sql ="Select userid from account where accountid = ?";
+				
+				try {
+					pst = conn.prepareStatement(sql);
+					pst.setInt(1, accountId);
+					
+					ResultSet rst = pst.executeQuery();
+					
+					while(rst.next()) {
+						
+						userid = rst.getInt(1);
+						
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+				return userid;
+				
+				
 			}
 			
 

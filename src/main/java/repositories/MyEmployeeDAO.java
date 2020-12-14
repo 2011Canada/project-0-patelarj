@@ -50,6 +50,42 @@ public class MyEmployeeDAO {
 				
 			}
 			
+			
+			// gets all the active account
+			public List<MyAccount> getAllApprov(){
+				
+				List<MyAccount> myAccounts = new ArrayList<MyAccount>();
+				
+				
+				String sql ="Select accountid, userid, ballence from account where status = 1 ";
+				
+				try {
+					pst = conn.prepareStatement(sql);
+					
+					ResultSet rst = pst.executeQuery();
+					
+					while(rst.next()) {
+						MyAccount accounts = new MyAccount();
+						accounts.setAccountId(rst.getInt(1));
+						accounts.setUserId(rst.getInt(2));
+						accounts.setAccountBallence(rst.getDouble(3));
+						
+						myAccounts.add(accounts);		
+					}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return myAccounts;
+				
+				
+			}
+			
+			
+			
+			
+			
 			// this method update the account table for the status of the account  
 			
 			public Boolean approveAccount(int accountId, int status) {
