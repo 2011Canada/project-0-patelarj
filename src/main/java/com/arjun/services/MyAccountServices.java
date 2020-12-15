@@ -5,6 +5,9 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.arjun.models.MyAccount;
 import com.arjun.models.MyTransfer;
 import com.arjun.models.MyUsers;
@@ -20,12 +23,12 @@ public class MyAccountServices {
 	MyTransfer transfer = new MyTransfer();
 	List<MyTransfer> transfers = new ArrayList<MyTransfer>();
 	Scanner newScan = new Scanner(System.in);
-
+	public Logger project0 = LogManager.getLogger("com.revature.project0");
 
 	// this method request MyAppDAO to create the account with the balance if fails return false 
 	// Success will return true
 
-	public Boolean accountApplication(MyUsers one) {
+	public Boolean accountApplication(MyUsers one) throws InputMismatchException, NumberFormatException {
 
 
 		double ballence = -1;
@@ -39,7 +42,7 @@ public class MyAccountServices {
 				System.out.println("Please enter initial account balance : ");	
 				try {
 
-					ballence = newScan.nextDouble(); 
+					ballence = Double.parseDouble(newScan.nextLine()); 
 					account.setAccountBallence(ballence);	
 				}
 				catch(InputMismatchException e) {
@@ -62,29 +65,54 @@ public class MyAccountServices {
 
 	// this takes all the input form the users and creates the instance of MyTransfer and checks the user input
 	// takes the user instance as argument. 
-	public MyTransfer createTransfer(MyUsers one) throws InputMismatchException {
+	public MyTransfer createTransfer(MyUsers one) {
 
 
-		int reciveAccount;
+		int reciveAccount = 0;
+		double amount = 0;
+		
 		do {
+			
+			try {
+				
 			System.out.println("Please enter active recipient account number");
-			reciveAccount = newScan.nextInt();
+			
+			
+			reciveAccount =Integer.parseInt(newScan.nextLine());
+			}
+			catch(InputMismatchException | NumberFormatException e){
+				System.out.println("Please enter the valid input");
+			}
 			if(accountDAO.isAccountAvilable(reciveAccount) && accountDAO.findAccountId(one.getUserId()) != -1) {
 
 				transfer.setFromAccountId(accountDAO.findAccountId(one.getUserId()));
 				transfer.setToAccountId(reciveAccount);
 
-
+			
 				System.out.println("Pleae Enter the Amount need to be transfer");
-				double amount =  newScan.nextDouble();
+				
+				try {
+				 amount =  Double.parseDouble(newScan.nextLine());
+				}
+				catch (InputMismatchException | NumberFormatException e) {
+					// TODO: handle exception
+					
+					System.out.println("Please enter the valid input");
+				}
+				
 				transfer.setAmount(amount);
 
 				transfer.setApproval(0);
 
+			
+			
 			}
-
 		}
 		while(!accountDAO.isAccountAvilable(reciveAccount) || accountDAO.findAccountId(one.getUserId()) == -1);
+		
+		
+		
+		
 		return transfer ;
 
 
@@ -128,6 +156,7 @@ public class MyAccountServices {
 		if(update >= 0 ) {
 
 			accountDAO.updateBallence(update, userid);
+			
 			neg = true;
 
 		}
@@ -197,7 +226,7 @@ public class MyAccountServices {
 	// this method approve and reject the incomming transfer for the perticuler user 
 
 
-	public int approveTransection(int toUserId) {
+	public int approveTransection(int toUserId) throws InputMismatchException, NumberFormatException {
 
 
 		Boolean transfersuccess = false ;
@@ -208,9 +237,10 @@ public class MyAccountServices {
 
 		while(ans != 0) {
 
-
+			
+			
 			System.out.println("Please Enter the Transfer ID to Approve / reject or 0 to exit ");
-			ans = newScan.nextInt();
+			ans = Integer.parseInt(newScan.nextLine()) ;
 			transfer = isTransferExists(transfers, ans);
 			if(transfer.getFromAccountId() !=0 && ans != 0) {
 
@@ -227,7 +257,7 @@ public class MyAccountServices {
 
 
 						transfersuccess = updateBAllenceTransferAccept(toUserId, transfer.getAmount()  );
-
+						project0.info("User " + toUserId +" Accepted the Transfer "+ transfer.getAmount());
 
 					} 
 
@@ -236,24 +266,28 @@ public class MyAccountServices {
 						int formUserid = accountDAO.getUserIdByAccountId(transfer.getFromAccountId());
 						if(formUserid != -1) {
 
+							project0.info("User " + toUserId +" Rejected the Transfer "+ transfer.getAmount());
 							transfersuccess = updateBAllenceTransferAccept(formUserid, transfer.getAmount());
-
+							project0.info("User " + formUserid +" Account has been Credited $"+ transfer.getAmount());
 						}
 
 
 					}
-
+					
+				}
 
 					if(transfersuccess) {
 
 						Boolean upddated = accountDAO.updateTransferTable(transfer, apprej);
 					}
-
+					
+					ans = pandingTransection(accountid);
 				}
 
-			}
-
-			ans = pandingTransection(accountid);
+			
+			
+			
+			
 		}
 
 		if(ans == 0 ) {
@@ -266,20 +300,20 @@ public class MyAccountServices {
 
 	}
 	
-	public Boolean depositOrWidrow(int userid) {
+	public Boolean depositOrWidrow(int userid) throws InputMismatchException, NumberFormatException {
 		Boolean success = false;
 		
 		System.out.println("Please Enter Amout to widrow or deposit");
-		double amount = newScan.nextDouble();
+		double amount = Double.parseDouble(newScan.nextLine());
 		if(amount > 0) {
 			
 		success =	updateBAllenceTransferAccept(userid, amount);
-			
+		project0.info("User " + userid +" Deposited $"+amount);	
 		}
 		else if(amount < 0) {
 
 			success = updateBAllenceTransferAccept(userid, amount);
-			
+			project0.info("User " + userid +" Widraw $"+amount);
 			
 		}
 		

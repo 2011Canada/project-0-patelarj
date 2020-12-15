@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.arjun.models.MyAccount;
+import com.arjun.models.MyTransfer;
 import com.arjun.util.MyConnectionFactory;
 
 public class MyEmployeeDAO {
@@ -132,9 +133,41 @@ public class MyEmployeeDAO {
 				}
 				
 				return isAccountApproved;
+					
+			}
+			
+			
+// this will show all the transfer to employee 
+			
+public List<MyTransfer> getAllTransfer(){
 				
 				
+				List<MyTransfer> transfer = new ArrayList<MyTransfer>();
 				
+				
+				String sql ="Select transaction_id, from_account_acid, to_account_acid, amount, approval from transfer ";
+				
+				try {
+					pst = conn.prepareStatement(sql);
+					
+					ResultSet rst = pst.executeQuery();
+					
+					while(rst.next()) {
+						MyTransfer accounts = new MyTransfer();
+						accounts.setTransactionId(rst.getInt(1));
+						accounts.setFromAccountId(rst.getInt(2));
+						accounts.setToAccountId(rst.getInt(3));
+						accounts.setAmount(rst.getDouble(4));
+						accounts.setApproval(rst.getInt(5));
+						
+						transfer.add(accounts);		
+					}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return transfer;
 			}
 
 }

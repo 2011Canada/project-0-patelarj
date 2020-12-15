@@ -1,13 +1,18 @@
 package com.arjun.services;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 import javax.sound.midi.SysexMessage;
 
 import com.arjun.models.MyAccount;
+import com.arjun.models.MyTransfer;
 import com.arjun.models.MyUsers;
 
 import repositories.MyAppDAO;
@@ -17,11 +22,13 @@ public class MyEmployeeServices {
 
 	
 	
-	
+		File two = new File("E:\\project-0-patelarj\\logs\\trace.log");
+		
 		
 		MyEmployeeDAO empDAO = new MyEmployeeDAO();
 		MyAppDAO appDAO = new MyAppDAO();
 		List<MyAccount> accounts = new ArrayList<MyAccount>();
+		List<MyTransfer> transfers = new ArrayList<MyTransfer>();
 		MyUsers user = new MyUsers();
 		Scanner newScan = new Scanner(System.in);
 		
@@ -93,7 +100,8 @@ public class MyEmployeeServices {
 	// this will ask for user input to approve the or rejest
 		
 		
-		public int approveAccount(){
+		public int approveAccount() throws InputMismatchException, NumberFormatException {
+			
 			
 			
 			int[] userinfo = new int[2];
@@ -104,13 +112,13 @@ public class MyEmployeeServices {
 				pandingAccount();
 				System.out.println("Please Enter the AccountID to Approve / reject or 0 to exit ");
 			
-				ans = newScan.nextInt();
+				ans = Integer.parseInt(newScan.nextLine());
 				userinfo = isRequestExists(accounts, ans);
 				
 				if(userinfo[0] !=0 && userinfo[1] != 0) {
 					
 				 System.out.println("please enter 1 for Approve 2 for reject");
-				 int apprej = newScan.nextInt();
+				 int apprej =Integer.parseInt(newScan.nextLine()) ;
 				if(apprej> 0 & apprej <3) {
 					
 					if(empDAO.approveAccount(userinfo[0], apprej) & empDAO.approveCustomerAccount(userinfo[1], apprej) )   {
@@ -130,6 +138,34 @@ public class MyEmployeeServices {
 				
 					return ans;
 
+			
+		}
+		
+		public void getAllTrenasfer() {
+			
+			
+			transfers  = empDAO.getAllTransfer();
+
+			for(int i = 0; i< transfers.size(); i++) {
+				System.out.println("########################################################################################################################################");
+				System.out.println("Transfer ID : "+transfers.get(i).getTransactionId()+" From Account ID : "+transfers.get(i).getFromAccountId()+" To Account ID :"+ transfers.get(i).getToAccountId() +" Amount : "+transfers.get(i).getAmount());
+
+			}
+			
+		}
+		
+		public void getAllLog() {
+			
+			try {
+				Scanner scan = new Scanner(two);
+				while(scan.hasNextLine()) {
+					String line = scan.nextLine();
+					System.out.println(line);
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 		

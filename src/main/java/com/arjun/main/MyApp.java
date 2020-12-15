@@ -1,6 +1,11 @@
 package com.arjun.main;
 
 
+import java.util.InputMismatchException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.arjun.menu.MyMenuManager;
 import com.arjun.models.MyTransfer;
 import com.arjun.models.MyUsers;
@@ -8,12 +13,10 @@ import com.arjun.services.MyAccountServices;
 import com.arjun.services.MyAppServices;
 import com.arjun.services.MyEmployeeServices;
 
-import repositories.MyAccountDAO;
-import repositories.MyAppDAO;
-
 
 public class MyApp {
 
+	public static Logger project0 = LogManager.getLogger("com.revature.project0");
 	
 
 	public static void main(String[] args) {
@@ -41,6 +44,8 @@ public class MyApp {
 						
 						userinputat2 = MyMenuManager.menuManager(one);
 						
+						project0.info("User id " +one.getUserId() +" is Log in");
+						
 						//this block //
 						do {
 						if(one.getSecurityLevel()==0) {
@@ -49,17 +54,23 @@ public class MyApp {
 								switch(userinputat2) {
 								case 1:
 								
-									//userinput = MyMenuManager.displayMainPage();
+									project0.info("User id " +one.getUserId() +" is Log out");
 									sw = false;
 									break;
 								case 2:
-							
+									
+									try {
 									Boolean isApplicationDone = accountServices.accountApplication(one);
 									if(isApplicationDone) {
 										System.out.println("your accout application is Done Please wait for the approval :");
 									}
 									else {
 										System.out.println("your account application is unsuccessful or you already have application panding please try again ");
+									}
+									
+									}
+									catch(InputMismatchException | NumberFormatException e) {
+										System.out.println("Please Enter the valid input");
 									}
 									userinputat2 = MyMenuManager.menuManager(one);
 							
@@ -83,7 +94,7 @@ public class MyApp {
 								switch(userinputat2) {
 								case 1:
 										
-									
+									project0.info("User id " +one.getUserId() +" is Log out");
 									sw = false;
 								
 								break;
@@ -100,8 +111,11 @@ public class MyApp {
 									Boolean done = true;
 									
 									do {
+										
+										
 									transfer = accountServices.createTransfer(one);
-									
+										
+										
 									if(accountServices.updateBallenceTransfer(one.getUserId(), transfer.getAmount())) {
 										done = accountServices.transferNow(transfer);
 										
@@ -125,10 +139,16 @@ public class MyApp {
 								break;
 								case 4:
 									
-									
-									int respoce = accountServices.approveTransection(one.getUserId());
-									
-									if(respoce == 0) {
+									int responce = -1;
+									try {
+									responce = accountServices.approveTransection(one.getUserId());
+									}
+									catch (InputMismatchException | NumberFormatException e) {
+										// TODO: handle exception
+										System.out.println("Please Enter valid Choice");
+										userinputat2=4;
+									}
+									if(responce == 0) {
 									userinputat2 = MyMenuManager.menuManager(one);
 									}
 									
@@ -138,17 +158,22 @@ public class MyApp {
 									
 										Boolean issuccess = false;
 									
-										
+										try {
 											issuccess = accountServices.depositOrWidrow(one.getUserId());
-											System.out.println(issuccess);
+											
 										if(!issuccess) {
 											
 											System.out.println("Please Enter the valid amount");
-											userinputat2 = 2;
+											
 										}
 										else if(issuccess) {
 											System.out.println("Your Transfer is Complit"); 
 											userinputat2 = 2;
+										}
+										}
+										catch (InputMismatchException | NumberFormatException e) {
+											// TODO: handle exception
+											System.out.println("Please Enter Valid Amount :");
 										}
 										 
 										//userinputat2 = MyMenuManager.menuManager(one);
@@ -167,15 +192,20 @@ public class MyApp {
 								switch(userinputat2) {
 								case 1:
 									
-									
+									project0.info("User id " +one.getUserId() +" is Log out");
 									sw = false;
 								break;
 								case 2:
 									
-									int out;
+									int out = -1;
 										do {
+											try {
 									   out =  employeeServices.approveAccount(); 
-										
+											}
+											catch(InputMismatchException | NumberFormatException e) {
+												
+												System.out.println("Please Enter the valid input");
+											}
 										}
 									   while(out!=0) ;
 										
@@ -192,12 +222,12 @@ public class MyApp {
 								break;
 								case 4:
 									
-									System.out.println("you have selecter 4");
-								break;
-								case 5:
 									
-									System.out.println("you have selecter 5");
+									//employeeServices.getAllTrenasfer();
+									employeeServices.getAllLog();
+									userinputat2 = MyMenuManager.menuManager(one);
 								break;
+								
 
 
 								
