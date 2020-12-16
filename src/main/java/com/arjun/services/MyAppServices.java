@@ -13,19 +13,23 @@ public class MyAppServices {
 	MyUsers user = new MyUsers();
 	Scanner newScan = new Scanner(System.in);
 	
+	
+	// this method will ask for the unsername and password check in database if exist then return instance of the user object 
+	 
+	
 	public MyUsers logInService() {
 		
 		int uid;
 		do {
-		System.out.println("Please Enter the username :");
+		System.out.println("Please Enter Username :");
 		String userName = newScan.nextLine();
-		System.out.println("Please Enter the Password :");
+		System.out.println("Please Enter  Password :");
 		String passWord = newScan.nextLine();
 		
 		uid = one.checkLogin(userName, passWord);
 		
 		if (uid == -1) {
-			System.out.println("Pleae Try again no user found");
+			System.out.println("Pleae Try again, User not found");
 			
 		}
 		
@@ -36,6 +40,9 @@ public class MyAppServices {
 		
 		
 	}
+	
+	// this will ask for the first name , last name, username, and password to create new user in the db if user created will return true if error then false
+	// it will not let creat duplicate username.
 	
 	public Boolean creatUserService() {
 		Boolean isUserCreated;
@@ -52,7 +59,7 @@ public class MyAppServices {
 			uname = newScan.nextLine();
 			if(!one.isUserUnique(uname)) {
 			
-				System.out.println("Username already exists ");
+				System.out.println("Username already in the system ");
 			}
 			
 		}

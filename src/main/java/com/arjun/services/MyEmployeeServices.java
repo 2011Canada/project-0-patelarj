@@ -38,12 +38,16 @@ public class MyEmployeeServices {
 			
 		accounts =	empDAO.getPendingAccount();
 			
-			
+		String str1 = String.format("%20s%20s%20s", "User ID", "Account ID", "Ballence"  );
+		System.out.println(str1);
 			
 		for(int i = 0; i< accounts.size(); i++) {
-				System.out.println("########################################################################################################################################");
-				System.out.println("AccountID : "+accounts.get(i).getAccountId()+" UserID : "+accounts.get(i).getUserId()+" Ballence : "+accounts.get(i).getAccountBallence());
-				
+			
+			String str2 = String.format("%20d%20d%20.2f", accounts.get(i).getUserId(),accounts.get(i).getAccountId(),accounts.get(i).getAccountBallence() );
+			System.out.println(str2);
+			
+			
+	
 				
 			}
 		
@@ -57,13 +61,16 @@ public class MyEmployeeServices {
 			accounts =	empDAO.getAllApprov();
 			
 			
-			
+			String str1 = String.format("%20s%20s%20s%20s%20s", "User ID", "First Name", "Last Name", "Account ID", "Ballence"  );
+			System.out.println(str1);
+			System.out.println("########################################################################################################################################");
 			
 			for(int i = 0; i< accounts.size(); i++) {
 				user = appDAO.getUsers(accounts.get(i).getUserId());
 				
-					System.out.println("########################################################################################################################################");
-					System.out.println("Name : "+ user.getFirstName() +" "+ user.getLastName() +" Account ID : "+accounts.get(i).getAccountId()+" User ID : "+ accounts.get(i).getUserId()+" Ballence : "+accounts.get(i).getAccountBallence());
+				String str2 = String.format("%20d%20s%20s%20d%20.2f", accounts.get(i).getUserId(),user.getFirstName(),user.getLastName(),accounts.get(i).getAccountId(),accounts.get(i).getAccountBallence());
+				System.out.println(str2);
+					
 					
 					
 				}
@@ -75,8 +82,10 @@ public class MyEmployeeServices {
 		
 		
 	// chekes if the account request is exists 	
+		// it will return 0 if request dose not exists 
+		// it will retrun the int array with index 0 being account ID and index 1 with userid
 		
-		private int[] isRequestExists(List<MyAccount> one, int accountID ) {
+		public int[] isRequestExists(List<MyAccount> one, int accountID ) {
 			
 			int[] userinfo = new int[2];
 			for(int i =0; i< one.size(); i++) {
@@ -130,9 +139,10 @@ public class MyEmployeeServices {
 					
 				}
 				
+				
 				}
 				
-				pandingAccount();
+				//pandingAccount();
 				}
 				while(ans != 0);
 				
@@ -141,10 +151,12 @@ public class MyEmployeeServices {
 			
 		}
 		
-		public void getAllTrenasfer() {
+	/*	public void getAllTrenasfer() {
 			
 			
 			transfers  = empDAO.getAllTransfer();
+			
+			String str1 = String.format("%20s%20s%20s%20s%20s", "Transfer ID", "From", "Last Name", "Account ID", "Ballence"  );
 
 			for(int i = 0; i< transfers.size(); i++) {
 				System.out.println("########################################################################################################################################");
@@ -153,7 +165,7 @@ public class MyEmployeeServices {
 			}
 			
 		}
-		
+		*/
 		public void getAllLog() {
 			
 			try {

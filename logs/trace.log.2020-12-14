@@ -1,0 +1,15 @@
+2020-12-14 21:21:11 project0 [INFO] 1002is Log in
+2020-12-14 21:24:13 project0 [INFO] User id 1002 is Log in
+2020-12-14 21:24:13 project0 [INFO] User id 1002 is Log out
+2020-12-14 21:46:48 project0 [INFO] User id 1002 is Log in
+2020-12-14 21:46:48 project0 [INFO] User id 1002 is Log out
+2020-12-14 21:47:10 project0 [INFO] User id 1001 is Log in
+2020-12-14 21:47:17 project0 [INFO] User 1001 Deposited $100.0
+2020-12-14 21:47:29 project0 [INFO] User 1001 Widraw $-100.0
+2020-12-14 21:48:42 project0 [INFO] User id 1001 is Log out
+2020-12-14 21:48:51 project0 [INFO] User id 1008 is Log in
+2020-12-14 21:49:04 project0 [INFO] User 1008 Accepted the Transfer 500.0
+2020-12-14 21:49:31 project0 [INFO] User 1008 Rejected the Transfer 500.0
+2020-12-14 21:49:31 project0 [INFO] User 1001 Account has been Credited $500.0
+2020-12-14 21:49:41 project0 [INFO] User id 1008 is Log out
+2020-12-14 22:21:46 project0 [INFO] User id 1002 is Log in

@@ -27,6 +27,7 @@ public class MyAccountServices {
 
 	// this method request MyAppDAO to create the account with the balance if fails return false 
 	// Success will return true
+	// takes the user object as the input
 
 	public Boolean accountApplication(MyUsers one) throws InputMismatchException, NumberFormatException {
 
@@ -89,7 +90,7 @@ public class MyAccountServices {
 				transfer.setToAccountId(reciveAccount);
 
 			
-				System.out.println("Pleae Enter the Amount need to be transfer");
+				System.out.println("Pleae Enter the Amount need to be transfer:");
 				
 				try {
 				 amount =  Double.parseDouble(newScan.nextLine());
@@ -112,7 +113,7 @@ public class MyAccountServices {
 		
 		
 		
-		
+		project0.info("User " + one.getUserId() +" Created Transfer request of $"+ transfer.getAmount());
 		return transfer ;
 
 
@@ -124,7 +125,7 @@ public class MyAccountServices {
 		Boolean done = false;
 
 		if(accountDAO.transfer(transfer)) {
-
+			
 			done = true;
 		}
 
@@ -192,9 +193,19 @@ public class MyAccountServices {
 
 		transfers = accountDAO.getPendigTransfer(accountid);
 
+		
+		String str1 = String.format("%20s%20s%20s", "Transfer ID", "From Account Id", "Amount" );
+		System.out.println(str1);
+		System.out.println("########################################################################################################################################");
+		
 		for(int i = 0; i< transfers.size(); i++) {
-			System.out.println("########################################################################################################################################");
-			System.out.println("Transfer ID : "+transfers.get(i).getTransactionId()+" From Account ID : "+transfers.get(i).getFromAccountId()+" Amount : "+transfers.get(i).getAmount());
+			
+			
+			//System.out.println("");
+	
+			String str2 = String.format("%20d%20d%20.2f", transfers.get(i).getTransactionId(),transfers.get(i).getFromAccountId(),transfers.get(i).getAmount());
+			System.out.println(str2);
+			//System.out.println("Transfer ID : "+transfers.get(i).getTransactionId()+" From Account ID : "+transfers.get(i).getFromAccountId()+" Amount : "+transfers.get(i).getAmount());
 
 		}
 
@@ -257,7 +268,7 @@ public class MyAccountServices {
 
 
 						transfersuccess = updateBAllenceTransferAccept(toUserId, transfer.getAmount()  );
-						project0.info("User " + toUserId +" Accepted the Transfer "+ transfer.getAmount());
+						project0.info("User " + toUserId +" Accepted the Transfer $"+ transfer.getAmount());
 
 					} 
 
@@ -266,7 +277,7 @@ public class MyAccountServices {
 						int formUserid = accountDAO.getUserIdByAccountId(transfer.getFromAccountId());
 						if(formUserid != -1) {
 
-							project0.info("User " + toUserId +" Rejected the Transfer "+ transfer.getAmount());
+							project0.info("User " + toUserId +" Rejected the Transfer $"+ transfer.getAmount());
 							transfersuccess = updateBAllenceTransferAccept(formUserid, transfer.getAmount());
 							project0.info("User " + formUserid +" Account has been Credited $"+ transfer.getAmount());
 						}

@@ -1,15 +1,75 @@
-2020-12-14 21:21:11 project0 [INFO] 1002is Log in
-2020-12-14 21:24:13 project0 [INFO] User id 1002 is Log in
-2020-12-14 21:24:13 project0 [INFO] User id 1002 is Log out
-2020-12-14 21:46:48 project0 [INFO] User id 1002 is Log in
-2020-12-14 21:46:48 project0 [INFO] User id 1002 is Log out
-2020-12-14 21:47:10 project0 [INFO] User id 1001 is Log in
-2020-12-14 21:47:17 project0 [INFO] User 1001 Deposited $100.0
-2020-12-14 21:47:29 project0 [INFO] User 1001 Widraw $-100.0
-2020-12-14 21:48:42 project0 [INFO] User id 1001 is Log out
-2020-12-14 21:48:51 project0 [INFO] User id 1008 is Log in
-2020-12-14 21:49:04 project0 [INFO] User 1008 Accepted the Transfer 500.0
-2020-12-14 21:49:31 project0 [INFO] User 1008 Rejected the Transfer 500.0
-2020-12-14 21:49:31 project0 [INFO] User 1001 Account has been Credited $500.0
-2020-12-14 21:49:41 project0 [INFO] User id 1008 is Log out
-2020-12-14 22:21:46 project0 [INFO] User id 1002 is Log in
+2020-12-15 15:22:18 project0 [INFO] User id 1008 is Log in
+2020-12-15 15:24:05 project0 [INFO] User id 1008 is Log out
+2020-12-15 15:24:18 project0 [INFO] User id 1002 is Log in
+2020-12-15 15:24:18 project0 [INFO] User id 1002 is Log out
+2020-12-15 15:24:31 project0 [INFO] User id 1001 is Log in
+2020-12-15 15:24:53 project0 [INFO] User id 1001 is Log out
+2020-12-15 15:25:26 project0 [INFO] User id 1002 is Log in
+2020-12-15 15:27:54 project0 [INFO] User id 1002 is Log out
+2020-12-15 15:28:37 project0 [INFO] User id 1002 is Log in
+2020-12-15 15:28:37 project0 [INFO] User id 1002 is Log out
+2020-12-15 15:30:03 project0 [INFO] User id 1008 is Log in
+2020-12-15 15:30:11 project0 [INFO] User 1008 Deposited $10.0
+2020-12-15 15:30:22 project0 [INFO] User 1008 Widraw $-100.0
+2020-12-15 15:30:31 project0 [INFO] User id 1008 is Log out
+2020-12-15 15:30:56 project0 [INFO] User id 1002 is Log in
+2020-12-15 15:57:34 project0 [INFO] User id 1001 is Log in
+2020-12-15 15:57:34 project0 [INFO] User id 1001 is Log out
+2020-12-15 15:57:57 project0 [INFO] User id 1002 is Log in
+2020-12-15 15:59:09 project0 [INFO] User id 1002 is Log in
+2020-12-15 16:00:15 project0 [INFO] User id 1002 is Log in
+2020-12-15 16:02:17 project0 [INFO] User id 1002 is Log in
+2020-12-15 16:04:29 project0 [INFO] User id 1002 is Log in
+2020-12-15 16:08:59 project0 [INFO] User id 1002 is Log in
+2020-12-15 16:09:18 project0 [INFO] User id 1002 is Log out
+2020-12-15 16:09:46 project0 [INFO] User id 1009 is Log in
+2020-12-15 16:10:01 project0 [INFO] User id 1009 is Log out
+2020-12-15 16:10:38 project0 [INFO] User id 1002 is Log in
+2020-12-15 16:16:13 project0 [INFO] User id 1002 is Log in
+2020-12-15 16:21:07 project0 [INFO] User id 1002 is Log in
+2020-12-15 22:45:09 project0 [INFO] User 1010 is Login
+2020-12-15 22:45:36 project0 [INFO] User 1010 is Logout
+2020-12-15 22:45:55 project0 [INFO] User 1011 is Login
+2020-12-15 22:46:05 project0 [INFO] User 1011 is Logout
+2020-12-15 22:46:50 project0 [INFO] User 1002 is Login
+2020-12-15 22:50:17 project0 [INFO] User 1002 is Login
+2020-12-15 22:53:45 project0 [INFO] User 1002 is Login
+2020-12-15 22:54:28 project0 [INFO] User 1002 is Login
+2020-12-15 22:56:18 project0 [INFO] User 1002 is Logout
+2020-12-15 22:56:50 project0 [INFO] User 1010 is Login
+2020-12-15 22:59:01 project0 [INFO] User 1010 is Login
+2020-12-15 23:00:07 project0 [INFO] User 1010 is Login
+2020-12-15 23:02:34 project0 [INFO] User 1010 is Login
+2020-12-15 23:04:18 project0 [INFO] User 1010 is Login
+2020-12-15 23:04:39 project0 [INFO] User 1010 is Login
+2020-12-15 23:05:14 project0 [INFO] User 1010 is Login
+2020-12-15 23:06:12 project0 [INFO] User 1010 is Logout
+2020-12-15 23:06:28 project0 [INFO] User 1011 is Login
+2020-12-15 23:07:16 project0 [INFO] User 1011 Accepted the Transfer 60.0
+2020-12-15 23:07:42 project0 [INFO] User 1011 Rejected the Transfer 10.0
+2020-12-15 23:07:42 project0 [INFO] User 1010 Account has been Credited $10.0
+2020-12-15 23:07:46 project0 [INFO] User 1011 is Logout
+2020-12-15 23:07:55 project0 [INFO] User 1010 is Login
+2020-12-15 23:08:19 project0 [INFO] User 1010 Deposited $10.0
+2020-12-15 23:08:37 project0 [INFO] User 1010 Widraw $-10.0
+2020-12-15 23:08:45 project0 [INFO] User 1010 Widraw $-100.0
+2020-12-15 23:09:13 project0 [INFO] User 1010 Deposited $10.0
+2020-12-15 23:09:41 project0 [INFO] User 1010 is Logout
+2020-12-15 23:10:08 project0 [INFO] User 1002 is Login
+2020-12-15 23:27:38 project0 [INFO] User 1011 is Login
+2020-12-15 23:28:53 project0 [INFO] User 1011 is Logout
+2020-12-15 23:29:38 project0 [INFO] User 1010 is Login
+2020-12-15 23:30:34 project0 [INFO] User 1010 is Login
+2020-12-15 23:34:33 project0 [INFO] User 1010 is Login
+2020-12-15 23:34:57 project0 [INFO] User 1010 Accepted the Transfer 10.0
+2020-12-15 23:35:09 project0 [INFO] User 1010 is Logout
+2020-12-15 23:35:20 project0 [INFO] User 1002 is Login
+2020-12-15 23:44:31 project0 [INFO] User 1010 is Login
+2020-12-15 23:44:43 project0 [INFO] User 1010 Created Transfer request of $6.0
+2020-12-15 23:44:45 project0 [INFO] User 1010 is Logout
+2020-12-15 23:44:54 project0 [INFO] User 1002 is Login
+2020-12-15 23:45:15 project0 [INFO] User 1002 is Logout
+2020-12-15 23:45:30 project0 [INFO] User 1011 is Login
+2020-12-15 23:45:37 project0 [INFO] User 1011 Accepted the Transfer $6.0
+2020-12-15 23:45:40 project0 [INFO] User 1011 is Logout
+2020-12-15 23:46:00 project0 [INFO] User 1002 is Login

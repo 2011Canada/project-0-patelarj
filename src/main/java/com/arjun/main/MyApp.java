@@ -44,7 +44,7 @@ public class MyApp {
 						
 						userinputat2 = MyMenuManager.menuManager(one);
 						
-						project0.info("User id " +one.getUserId() +" is Log in");
+						project0.info("User " +one.getUserId() +" is Login");
 						
 						//this block //
 						do {
@@ -54,7 +54,7 @@ public class MyApp {
 								switch(userinputat2) {
 								case 1:
 								
-									project0.info("User id " +one.getUserId() +" is Log out");
+									project0.info("User " +one.getUserId() +" is Logout");
 									sw = false;
 									break;
 								case 2:
@@ -62,10 +62,10 @@ public class MyApp {
 									try {
 									Boolean isApplicationDone = accountServices.accountApplication(one);
 									if(isApplicationDone) {
-										System.out.println("your accout application is Done Please wait for the approval :");
+										System.out.println("your account application is Done Please wait for the approval...!!!!");
 									}
 									else {
-										System.out.println("your account application is unsuccessful or you already have application panding please try again ");
+										System.out.println("your account application is unsuccessful or you already have application pending please try again !! ");
 									}
 									
 									}
@@ -94,14 +94,15 @@ public class MyApp {
 								switch(userinputat2) {
 								case 1:
 										
-									project0.info("User id " +one.getUserId() +" is Log out");
+									project0.info("User " +one.getUserId() +" is Logout");
 									sw = false;
 								
 								break;
 								case 2:
 									
 									System.out.println("############################################");
-									System.out.println("Your Account Ballence is $" + accountServices.getAccountBallence(one.getUserId()));
+									String st1 = String.format("%s%1.2f", "Your Account Balance is $", accountServices.getAccountBallence(one.getUserId()) );
+									System.out.println(st1);
 									userinputat2 = MyMenuManager.menuManager(one);
 									
 									
@@ -145,7 +146,7 @@ public class MyApp {
 									}
 									catch (InputMismatchException | NumberFormatException e) {
 										// TODO: handle exception
-										System.out.println("Please Enter valid Choice");
+										System.out.println("Please Enter a valid Choice");
 										userinputat2=4;
 									}
 									if(responce == 0) {
@@ -167,7 +168,7 @@ public class MyApp {
 											
 										}
 										else if(issuccess) {
-											System.out.println("Your Transfer is Complit"); 
+											System.out.println("Your Transfer is Complete"); 
 											userinputat2 = 2;
 										}
 										}
@@ -192,7 +193,7 @@ public class MyApp {
 								switch(userinputat2) {
 								case 1:
 									
-									project0.info("User id " +one.getUserId() +" is Log out");
+									project0.info("User " +one.getUserId() +" is Logout");
 									sw = false;
 								break;
 								case 2:
@@ -239,7 +240,7 @@ public class MyApp {
 							
 						//this is default block 
 						else {
-							System.out.println("Somthing Whent wrong");
+							System.out.println("Something went wrong twitter");
 						}
 						
 						

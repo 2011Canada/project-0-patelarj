@@ -12,7 +12,7 @@ public class MyMenuManager {
 	static MyMenu myMenu = new MyMenu();
 	static Scanner myScanner = new Scanner(System.in);
 	
-	// this method validate the user input and display the log in option.
+	// this method validate the user input and display the login option.
 	public static int displayMainPage()   {
 		
 		int userInput = 0;
@@ -28,7 +28,7 @@ public class MyMenuManager {
 			
 			}
 			catch (NumberFormatException e) {
-				System.out.println("Please Enter valid number");
+				System.out.println("Please Enter valid choice");
 			}
 			
 			if (userInput > 0 && userInput <=2 ) {
@@ -58,7 +58,7 @@ public class MyMenuManager {
 			return displayEmployeeMenu(one);
 		}
 		else {
-			System.out.println("User not exist");
+			System.out.println("User dose not exist");
 		}
 		
 		return 1;
@@ -80,7 +80,7 @@ public class MyMenuManager {
 				userInput =Integer.parseInt(myScanner.nextLine());
 			}
 			catch (NumberFormatException e) {
-				System.out.println("Please Enter valid number");
+				System.out.println("Please Enter valid choice");
 			}
 			if (userInput > 0 && userInput <=2 ) {
 				
@@ -105,7 +105,7 @@ public class MyMenuManager {
 			}
 			catch (NumberFormatException e) {
 				// TODO: handle exception
-				System.out.println("Please Enter valid number");
+				System.out.println("Please Enter valid choice");
 			}
 			if(userInput > 0 && userInput <= 5) {
 				swi = false;
@@ -126,7 +126,7 @@ public class MyMenuManager {
 			}
 			catch (NumberFormatException e) {
 				// TODO: handle exception
-				System.out.println("Please Enter valid number");
+				System.out.println("Please Enter valid choice");
 			}
 			if(userInput > 0 && userInput <= 5) {
 				swi = false;
